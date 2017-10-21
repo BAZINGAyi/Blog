@@ -6,7 +6,7 @@ layout: post
 ## 目标效果:
 
 
-![I and My friends]({{site.baseurl}}/assets/img/15079851283084-1.jpg)
+![traget_img]({{site.baseurl}}/assets/img/15079851283084-1.jpg)
 
 ## 实现要求:
 **使用百分比和 display:flex 属性**
