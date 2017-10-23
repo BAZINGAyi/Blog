@@ -1,0 +1,186 @@
+html {
+    box-sizing: border-box
+}
+*,
+*::after,
+*::before {
+    box-sizing: inherit
+}
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+}
+p {
+  margin: 0 0 1em;
+}
+.container {
+  width: 100%;
+  margin: 0 auto;
+}
+.picture, .resume {
+  position: fixed;
+  width: 50%;
+  padding: 3.125rem;
+}
+.picture {
+  top: 0;
+  left: 0;
+}
+.intro {
+  width: 75%;
+  margin: 55% auto 0;
+  font-family: Montserrat, sans-serif;
+  font-size: 10px;
+  line-height: 1.35;
+  font-weight: 500;
+  color: #fff;
+  text-align: center;
+}
+/*background-size: cover; 表示把图像完全填充到背景*/
+/*z-index:设置元素的层叠顺序 -1 表示在下面*/
+/*使用绝对布局一定设置宽高的值,并且不会再在其他非绝对布局的位置*/
+/*vh 是视窗的1%*/
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+/*由于 jekyll 的路径特殊性，有关 background 的属性拿出去写*/
+/*  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("{{site.baseurl}}/assets/img/profile.jpg");
+  background-size: cover;
+  background-position: center center;*/
+  filter: brightness(90%);
+}
+
+.intro em {
+  color: #3ee6bf;
+  font-style: normal;
+  position: relative;
+  font-weight: 700;
+}
+.resume {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+  font-family: Hind, sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 300;
+  line-height: 1.818;
+  overflow-y: scroll;
+}
+.part {
+  width: 100%;
+  margin-top: 3em;
+  clear: both;
+  overflow: hidden;
+}
+.part:first-child {
+  margin-top: 0;
+}
+.sidebar, .main {
+  float: left;
+}
+.sidebar {
+  width: 20%;
+}
+.main {
+  width: 80%;
+  padding-right: 10%;
+  padding-left: 5%;
+}
+.tag {
+  text-transform: uppercase;
+  font-style: italic;
+  font-weight: 600;
+  color: rgb(43, 93, 240);
+}
+
+/*增加 media query 对手机的支持*/
+
+@media screen and (min-width: 1px) and (max-width: 558px) {
+
+  .intro {
+    padding-top: 55%;
+    margin-top: 0%;
+  }
+
+  .background {
+    position: static;
+  }
+
+ /* position 的默认值是 fixed，生成的是绝对位置的元素*/
+   .resume, .picture {
+    width: 100%;
+    position: static;
+   }
+
+   .resume {
+    overflow: hidden;
+   }
+
+   .picture {
+    padding: 0px;
+   }
+
+   .sidebar, .main {
+    float: none;
+  }
+
+  .sidebar {
+    width: 100%;
+    text-align: center;
+  }
+
+  .main {
+    width: 100%;
+    padding: 0px;
+  }
+
+  .main h4, .main p {
+    text-align:center;
+  }
+
+  .date-range {
+    text-align: center;
+  }
+
+}
+
+/*增加 media query 对平板的支持*/
+
+@media screen and (min-width: 558px) and (max-width: 840px) {
+   .resume {
+    padding: 1.125rem;
+   }
+
+   .sidebar, .main {
+    float: none;
+  }
+
+  .sidebar {
+    width: 100%;
+    text-align: center;
+  }
+
+  .main {
+    width: 100%;
+    padding: 0px;
+  }
+
+  .main h4, .main p {
+    text-align:center;
+  }
+
+  .date-range {
+    text-align: center;
+  }
+}
+
+/*增加 media query 对电脑的支持*/
+
+@media screen and (min-width: 840px) {
+
+}
+
