@@ -101,13 +101,18 @@ p {
 
 @media screen and (min-width: 1px) and (max-width: 558px) {
 
+   /*原先设置 margin 是因为是绝对布局，所以需要设置 intro 对应元素的 margin 使其
+  在图片的内部，而在手机的显示中，不是绝对布局，intro 在图片的内部，所以需要设置 padding*/
   .intro {
     padding-top: 55%;
     margin-top: 0%;
   }
-
+/*在这两个浏览器中，有两个嵌套关系的div，如果外层div的父元素padding值为0，
+那么内层div的margin-top或者margin-bottom的值会“转移”给外层div。
+解决办法在是父级元素上设置 overflow:hidden */
   .background {
     position: static;
+    overflow: hidden;
   }
 
  /* position 的默认值是 fixed，生成的是绝对位置的元素*/
@@ -116,16 +121,13 @@ p {
     position: static;
    }
 
-   .resume {
-    overflow: hidden;
-   }
-
    .picture {
     padding: 0px;
    }
 
+    /*清除元素两边的浮动元素*/
    .sidebar, .main {
-    float: none;
+    clear: both;
   }
 
   .sidebar {
@@ -155,8 +157,9 @@ p {
     padding: 1.125rem;
    }
 
+   . /*清除元素两边的浮动元素*/
    .sidebar, .main {
-    float: none;
+    clear: both;
   }
 
   .sidebar {
