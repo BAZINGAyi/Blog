@@ -148,6 +148,10 @@ p {
     text-align: center;
   }
 
+  .intro a {
+    text-decoration: none;
+  }
+
 }
 
 /*增加 media query 对平板的支持*/

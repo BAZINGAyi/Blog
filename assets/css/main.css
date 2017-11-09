@@ -1278,7 +1278,7 @@ a.newer-posts:hover {
   opacity: .8;
 }
 
-.img {
+img {
   width: 60%;
 }
 
@@ -1309,7 +1309,7 @@ a.newer-posts:hover {
   }
 
   img {
-    width: 80%;
+    width: 70%;
   }
 
 }
@@ -1376,7 +1376,7 @@ a.newer-posts:hover {
   }
 
   img {
-    width: 65%;
+    width: 80%;
   }
 
 
