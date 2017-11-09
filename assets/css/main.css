@@ -89,7 +89,7 @@ hr {
  * 2. Correct the odd `em` font sizing in all browsers.
  */
 pre {
-  font-family: monospace, monospace;
+  font-family: monospace, sans-serif;
   /* 1 */
   font-size: 1em;
   /* 2 */
@@ -792,6 +792,7 @@ h1 {
 
 img {
   max-width: 100%;
+  width: 70%;
   vertical-align: middle;
   display: inline-block;
 }
@@ -1276,10 +1277,6 @@ a.newer-posts:hover {
 .tag-list span a:hover {
   text-decoration: underline;
   opacity: .8;
-}
-
-img {
-  width: 60%;
 }
 
 /* - - - - - - - - - - Media Styles - - - - - - - - - - */
