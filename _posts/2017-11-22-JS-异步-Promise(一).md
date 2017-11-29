@@ -18,10 +18,10 @@ img: js-head.png
 
 ![Callback-1]({{site.baseurl}}/assets/img/15113467899026.jpg)
 
-1. 怎样处理错误，在第一个图中突然发现 img 没有被成功加载，或者遇到网络错误，这时在执行强制回调时，就会产生错误，这时就需要制定一些合适的策略
-2. 假如一个 callback 方法结束后，还需要执行一系列 callback 方法，就会出现如第二个图中的现象，非常难以调试
+1. 怎样处理错误，在第一个图中突然发现 img 没有被成功加载，或者遇到网络错误，这时在执行强制回调时，就会产生错误，这时就需要制定一些合适的策略来解决这些问题
+2. 假如一个 callback 方法结束后，还需要执行一系列 callback 方法，就会出现如第二个图中的现象，非常难以阅读和调试
 
-### 采用 Promise 编写相同的代码
+### 采用 Promise 编写的代码
 
 ![Promise-1]({{site.baseurl}}/assets/img/15113468654269.jpg)
 
@@ -46,9 +46,9 @@ settled：已经执行成功或失败
 
 如图中所示，当一个事件已经触发后，再设置监听，监听事件是不会被调用。
 
-但是当用 Promise 时，对已经完成的 Promise 设置一个事件，设置的操作会被执行
+但是当用 Promise 时，对已经完成的 Promise 设置一个事件被解决的数值，设置的操作会被正常执行
 
-Promise 运行在主线程，所以如果运行一个长时间的任务，可能会阻塞浏览器渲染页面。所以 Promise 仅仅是一种决定同步处理任务时会出现什么结果的技术
+Promise 运行在主线程，所以如果运行一个长时间的任务，可能会阻塞浏览器渲染页面，造成卡顿。所以 Promise 仅仅是一种决定同步处理任务时会出现什么结果的技术
 
 ---
 
@@ -57,6 +57,8 @@ Promise 运行在主线程，所以如果运行一个长时间的任务，可能
 ### Resolve demo
 
 > 当执行 reslove 或 rejected 方法时，证明状态已经设置完成，并且只能执行一次，然后会进入 then 或 catch 方法
+
+下面模拟了处理异步的一种工作方式
 
 ```HTML
 <!DOCTYPE html>
@@ -94,7 +96,12 @@ Promise 运行在主线程，所以如果运行一个长时间的任务，可能
 
 ### Document.Ready 状态测试
 
-**在加载图片时先加载文本**
+**要求：在加载图片时先加载文本**
+
+> Document.readyState 的三种状态
+> loading - document 仍然被加载
+> interactive -  document 被加载完成，正在加载一些子资源，如图片、样式表和框架
+> complete - 所有 document 和 子资源被加载完成
 
 ```html
 <!DOCTYPE html>
@@ -160,12 +167,72 @@ Promise 运行在主线程，所以如果运行一个长时间的任务，可能
 </html>
 ```
 
-> Document.readyState 的三种状态
-> loading - document 仍然被加载
-> interactive -  document 被加载完成，正在加载一些子资源，如图片、样式表和框架
-> complete - 所有 document 和 子资源被加载完成
 
+### XMLHttp 结合 Promise
 
+[XMLHTTP介绍](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest)
+
+```JS
+  function get(url) {
+    return new Promise(function(resolve, reject) {
+      var req = new XMLHttpRequest();
+      req.open('GET', url);
+      req.onload = function() {
+        if (req.status === 200) {
+          resolve(req.response);
+        } else {
+          reject(Error(req.statusText));
+        }
+      };
+      req.onerror = function() {
+        reject(Error('Network Error'));
+      };
+      req.send();
+    });
+  }
+
+   get(URL)
+    .then(function(response) {
+      // TO DO
+    })
+    .catch(function(error) {
+      // TO DO
+    });
+```
+
+### Fetch 的使用 - 精简 (XMLHttp 和 Promise)
+
+[Fetch介绍](https://davidwalsh.name/fetch)
+
+```JS
+  function get(url) {
+    return fetch(url, {
+        method: 'get'
+    });
+  }
+
+  function getJSON(url) {
+    
+	return get(url)
+           .then(function(response) {
+                console.log(response.json);
+
+                if(!response.ok) {
+                  throw Error(response.statusText ? response.statusText : 'Unknown network error');
+                }
+
+                return response.json();
+            });
+  }
+
+  getJSON(URL)
+     .then(function(response) {
+        // TO DO
+     })
+     .catch(function(error) {
+        // TO DO
+  });
+  ```
 
 
 
