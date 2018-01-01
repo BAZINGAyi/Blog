@@ -7,29 +7,28 @@ title: My Profile
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>The Mobile Experience</title>
+  <title>Dawn</title>
   <link href="https://fonts.googleapis.com/css?family=Montserrat:500,700|Hind:400,600,300" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="{{site.baseurl}}/assets/css/myProfile/normalize.css">
   <link rel="stylesheet" href="{{site.baseurl}}/assets/css/myProfile/styles.css">
   <!-- current design is from http://rafaelderolez.be/, would need to be replaced if lab approved -->
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style type="text/css">
-    .my_background {
+    .picture__background--full {
       background: -webkit-linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("{{site.baseurl}}/assets/img/profile.jpg");
       background: -o-linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("{{site.baseurl}}/assets/img/profile.jpg");
       background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("{{site.baseurl}}/assets/img/profile.jpg");
       background-size: cover;
       background-position: center center;
     }
-
   </style>
 </head>
 <body>
   <div class="container">
     <section class="picture">
       <a href="{{site.baseurl}}/index">
-        <div class="background my_background ">
-          <div class="intro">
+        <div class="picture__background picture__background--full ">
+          <div class="picture__information">
           <h1>Hello, I'm Dawn!</h1>
           <h1>一只放荡不羁的 <em>码农z</em>.</h1>
           </div>
@@ -38,10 +37,10 @@ title: My Profile
     </section>
     <section class="resume">
       <section class="part">
-        <div class="sidebar">
-          <span class="tag">Jenna Garcia</span>
+        <div class="part__sidebar">
+          <span class="part__tag">Jenna Garcia</span>
         </div>
-        <div class="main">
+        <div class="part__main">
           <p>
             Hello! I'm  Dawn. A web developer from New York City, currently working at a Silicon Valley startup called, Fomotograph.
           </p>
@@ -51,10 +50,10 @@ title: My Profile
         </div>
       </section>
       <section class="part">
-        <div class="sidebar">
-          <span class="tag">Projects</span>
+        <div class="part__sidebar">
+          <span class="part__tag">Projects</span>
         </div>
-        <div class="main">
+        <div class="part__main">
           <h4>Collector of Cats</h4>
           <p>
             A web application that shows you a random photo of a cat, and allows you to add the photo to your album of cat photos.
@@ -66,10 +65,10 @@ title: My Profile
         </div>
       </section>
       <section class="part">
-        <div class="sidebar">
-          <span class="tag">Work</span>
+        <div class="part__sidebar">
+          <span class="part__tag">Work</span>
         </div>
-        <div class="main">
+        <div class="part__main">
           <div>
             <h4>Fomotograph</h4>
             <div class="date-range">September 2015 - Present</div>
