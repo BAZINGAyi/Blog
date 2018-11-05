@@ -3,9 +3,11 @@ _site
 .jekyll-metadata
 yarn.lock
 node_modules/
+.MWebMetaData/
 
 ### macOS ###
 *.DS_Store
+DS_Store/*
 .AppleDouble
 .LSOverride
 
